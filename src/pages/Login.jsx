@@ -1,10 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-
+    const { loginUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [showpassword, setshowpassword] = useState(false);
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        loginUser(email, password)
+            .then(res => {
+                console.log(res.user)
+                Swal.fire({
+                    title: 'Login Success',
+                    text: 'Do you want to continue',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error('Please Type Corrrct Information')
+            })
+    }
 
     return (
         <div className="mt-20 font-algeria">
@@ -13,7 +42,7 @@ const Login = () => {
                 <title className="">Peaceful Tour | Login</title>
             </Helmet> */}
             <h2 className="mb-4 text-center font-bold text-5xl">Please Login</h2>
-            <form className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
+            <form onSubmit={handleLogin} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Email</span>
@@ -45,6 +74,7 @@ const Login = () => {
                     </div>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     );
 };
