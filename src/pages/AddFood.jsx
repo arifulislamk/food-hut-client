@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddFood = () => {
     const { user } = useContext(AuthContext)
 
-    const handleAddFood = event => {
+    const handleAddFood = async event => {
         event.preventDefault();
         const form = event.target;
         const foodName = form.foodname.value;
@@ -19,6 +21,31 @@ const AddFood = () => {
         const userimage = form.userimage.value;
         const foodstatus = form.foodstatus.value;
         console.log(foodName, foodquantity, foodImage, pickuplocation, expiredDate, additionalnotes, username, useremail, userimage, foodstatus)
+        const food = {
+            foodName,
+            foodquantity,
+            foodImage,
+            pickuplocation,
+            expiredDate,
+            additionalnotes,
+            username,
+            useremail,
+            userimage,
+            foodstatus
+        }
+
+        try {
+            const { data } = await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
+            console.log(data)
+            if (data.insertedId) {
+                toast.success('Food Added Done')
+            }
+        }
+        catch (err) {
+            console.log(err)
+            toast.error('Issuse Founded')
+        }
+
     }
     return (
         <div>
@@ -102,6 +129,7 @@ const AddFood = () => {
                     <button className="btn btn-secondary">Add Food</button>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     );
 };
