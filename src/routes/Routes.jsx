@@ -8,6 +8,7 @@ import AddFood from "../pages/AddFood";
 import ManageMyFoods from "../pages/ManageMyFoods";
 import MyFoodRequest from "../pages/MyFoodRequest";
 import HiddenRoutes from "./HiddenRoutes";
+import FoodDetails from "../pages/FoodDetails";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: "/myFoodRequest",
                 element: <HiddenRoutes><MyFoodRequest /></HiddenRoutes>
+            },
+            {
+                path: "/foodDetails/:id",
+                element: <HiddenRoutes><FoodDetails /></HiddenRoutes>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_URL}/allFoods/${params.id}`)
             },
             {
                 path: "/login",

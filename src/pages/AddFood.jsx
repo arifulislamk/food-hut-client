@@ -1,37 +1,40 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddFood = () => {
+    const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
 
     const handleAddFood = async event => {
         event.preventDefault();
         const form = event.target;
         const foodName = form.foodname.value;
-        const foodquantity = form.foodquantity.value;
+        const foodQuantity = form.foodquantity.value;
         const foodImage = form.foodimage.value;
-        const pickuplocation = form.pickuplocation.value;
+        const pickupLocation = form.pickuplocation.value;
         const expiredDate = form.expiredDate.value;
-        const additionalnotes = form.additionalnotes.value;
-        const username = form.name.value;
-        const useremail = form.email.value;
-        const userimage = form.userimage.value;
-        const foodstatus = form.foodstatus.value;
-        console.log(foodName, foodquantity, foodImage, pickuplocation, expiredDate, additionalnotes, username, useremail, userimage, foodstatus)
+        const additionalNotes = form.additionalnotes.value;
+        const donatorName = form.name.value;
+        const donatorEmail = form.email.value;
+        const donatorImage = form.userimage.value;
+        const foodStatus = form.foodstatus.value;
+        console.log(foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus)
         const food = {
             foodName,
-            foodquantity,
+            foodQuantity,
             foodImage,
-            pickuplocation,
+            pickupLocation,
             expiredDate,
-            additionalnotes,
-            username,
-            useremail,
-            userimage,
-            foodstatus
+            additionalNotes,
+            donatorName,
+            donatorEmail,
+            donatorImage,
+            foodStatus
         }
 
         try {
@@ -85,7 +88,7 @@ const AddFood = () => {
                         <label className="label">
                             <span className="label-text text-xl font-medium">Expired Date/Time :</span>
                         </label>
-                        <input type="text" name="expiredDate" placeholder="Expired Date/Time" className="input input-bordered" required />
+                        <DatePicker className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                 </div>
 
