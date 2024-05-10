@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import AddFood from "../pages/AddFood";
 import ManageMyFoods from "../pages/ManageMyFoods";
 import MyFoodRequest from "../pages/MyFoodRequest";
+import HiddenRoutes from "./HiddenRoutes";
 
 const router = createBrowserRouter([
     {
@@ -23,15 +24,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/addFood",
-                element: <AddFood />
+                element: <HiddenRoutes><AddFood /></HiddenRoutes>
             },
             {
                 path: "/manageMyFoods",
-                element: <ManageMyFoods />
+                element: <HiddenRoutes><ManageMyFoods /></HiddenRoutes>
             },
             {
                 path: "/myFoodRequest",
-                element: <MyFoodRequest />
+                element: <HiddenRoutes><MyFoodRequest /></HiddenRoutes>
             },
             {
                 path: "/login",

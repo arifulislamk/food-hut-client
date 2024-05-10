@@ -1,13 +1,19 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+
+import { Helmet } from "react-helmet";
+import Slider from "../components/Slider";
+import FeaturedFoods from "../components/FeaturedFoods";
 
 
 
 const Home = () => {
-    const { name } = useContext(AuthContext)
     return (
         <div>
-            <h2 className=" text-center text-5xl font-bold text-green-500">This Home Section {name}</h2>
+            <Helmet>
+                <title>FOOD HUT | Home</title>
+            </Helmet>
+            
+            <Slider />
+            <FeaturedFoods />
         </div>
     );
 };

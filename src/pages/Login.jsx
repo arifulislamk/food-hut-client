@@ -5,13 +5,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showpassword, setshowpassword] = useState(false);
 
-    const handleLogin = event => {
+    const handleLoginbtn = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -35,14 +36,47 @@ const Login = () => {
             })
     }
 
+    const handleGoogleLogin = () => {
+        console.log('google')
+        googleLogin()
+            .then(res => {
+                console.log(res.user)
+                Swal.fire({
+                    title: 'Login With Google',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error('Ooops! issues. Please try again')
+            })
+    }
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then(res => {
+                Swal.fire({
+                    title: 'Login With Github',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                navigate(location?.state ? location.state : '/')
+                console.log(res.user)
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error('Ooops! issues. Please try again')
+            })
+    }
+
     return (
         <div className="mt-20 font-algeria">
-            {/* <ToastContainer /> */}
-            {/* <Helmet className="text-sm">
-                <title className="">Peaceful Tour | Login</title>
-            </Helmet> */}
+            <Helmet>
+                <title>FOOD HUT | Login</title>
+            </Helmet>
             <h2 className="mb-4 text-center font-bold text-5xl">Please Login</h2>
-            <form onSubmit={handleLogin} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
+            <form onSubmit={handleLoginbtn} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Email</span>
@@ -69,8 +103,8 @@ const Login = () => {
                 </div>
                 <div className=" flex justify-center items-center">
                     <div className="flex lg:mt-4 w-4/5">
-                        <div className="w-1/2"><button className=" w-2/5"><img src="https://i.ibb.co/vJN54YQ/Google-2015-logo-svg.png" alt="google image" /></button></div>
-                        <div className="w-1/2"><button className=" w-2/5"><img src="https://i.ibb.co/nrsgX6d/images.png" alt="githubimage" /></button></div>
+                        <div className="w-1/2"><button onClick={handleGoogleLogin} className=" w-2/5"><img src="https://i.ibb.co/vJN54YQ/Google-2015-logo-svg.png" alt="google image" /></button></div>
+                        <div className="w-1/2"><button onClick={handleGithubLogin} className=" w-2/5"><img src="https://i.ibb.co/nrsgX6d/images.png" alt="githubimage" /></button></div>
                     </div>
                 </div>
             </form>

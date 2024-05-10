@@ -5,6 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const SignUp = () => {
@@ -48,6 +49,9 @@ const SignUp = () => {
     }
     return (
         <div className="mt-20 font-algeria">
+            <Helmet>
+                <title>FOOD HUT | Sign UP</title>
+            </Helmet>
             <h2 className="mb-4 text-center font-medium text-5xl">Please Register</h2>
             <form onSubmit={handleSignUP} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
