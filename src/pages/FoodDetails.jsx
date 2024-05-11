@@ -12,7 +12,7 @@ const FoodDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
     const foods = useLoaderData();
-    const navigate = useNavigate() ;
+    const navigate = useNavigate();
 
     // const { id } = useParams()
     // // const intId = parseInt(id)
@@ -42,9 +42,18 @@ const FoodDetails = () => {
                 console.log(res.data)
                 if (res.data.deletedCount > 0) {
                     console.log('deleted')
-                    navigate('/myFoodRequest')
+
+                    axios.post(`${import.meta.env.VITE_URL}/requestFoods`, food)
+                        .then(res => {
+                            console.log(res.data, 'post done')
+                            if (res.data.insertedId) {
+                                navigate('/myFoodRequest')
+                            }
+                        })
+
                     // const remeningFood = foods.filter(food => food._id !== _id);
                     // setMyFoods(remeningFood)
+
                 }
 
             })
