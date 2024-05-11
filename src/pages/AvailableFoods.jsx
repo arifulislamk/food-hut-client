@@ -7,19 +7,19 @@ const AvailableFoods = () => {
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
     const [foods, setFoods] = useState([]);
-    const [date , setDate] = useState('Accending')
+    const [sort, setSort] = useState('')
     useEffect(() => {
         const getData = async () => {
             // const { data } = await axios(`${import.meta.env.VITE_URL}/allFoods`)
             // console.log(data)
             // setFoods(data)
             const { data } = await axios(
-                `${import.meta.env.VITE_URL}/all-foods?search=${search}&date=${date}`
+                `${import.meta.env.VITE_URL}/all-foods?search=${search}&sort=${sort}`
             )
             setFoods(data)
         }
         getData()
-    }, [search,date])
+    }, [search, sort])
 
     const handleSearchbtn = e => {
         e.preventDefault();
@@ -51,7 +51,22 @@ const AvailableFoods = () => {
                             </button>
                         </div>
                     </form>
-                    
+                </div>
+                <div>
+                    <select
+                        onChange={e => {
+                            setSort(e.target.value)
+                            // setCurrentPage(1)
+                        }}
+                        value={sort}
+                        name='sort'
+                        id='sort'
+                        className='border p-4 rounded-md'
+                    >
+                        <option value=''>Sort By Deadline</option>
+                        <option value='dsc'>Descending Order</option>
+                        <option value='asc'>Ascending Order</option>
+                    </select>
                 </div>
             </div>
 

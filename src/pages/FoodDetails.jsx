@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 const FoodDetails = () => {
 
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
     const foods = useLoaderData();
+    const navigate = useNavigate() ;
 
     // const { id } = useParams()
     // // const intId = parseInt(id)
@@ -27,15 +29,25 @@ const FoodDetails = () => {
         additionalNotes,
         donatorName,
         donatorEmail,
-        donatorImage,
-        foodStatus } = foods;
+        donatorImage } = foods;
 
     const handleRequest = e => {
         e.preventDefault()
-        const form = e.target;
-        const foodName = form.foodname.value;
-        const additionalNotes = form.additionalnotes.value;
-        console.log(foodName, additionalNotes, 'okkk')
+        const { _id, foodStatus, ...restFoods } = foods;
+        const food = { foodStatus: 'requested', ...restFoods }
+        console.log('delete okkk', _id, foodStatus, food);
+
+        axios.delete(`${import.meta.env.VITE_URL}/allFoodsdelete/${_id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.deletedCount > 0) {
+                    console.log('deleted')
+                    navigate('/myFoodRequest')
+                    // const remeningFood = foods.filter(food => food._id !== _id);
+                    // setMyFoods(remeningFood)
+                }
+
+            })
     }
     return (
         <div className="font-algeria space-y-5 mx-4 lg:mx-12 ">
