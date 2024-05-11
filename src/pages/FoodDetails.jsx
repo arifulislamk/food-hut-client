@@ -34,7 +34,11 @@ const FoodDetails = () => {
     const handleRequest = e => {
         e.preventDefault()
         const { _id, foodStatus, ...restFoods } = foods;
-        const food = { foodStatus: 'requested', ...restFoods }
+        const food = {
+            foodStatus: 'requested',
+            ...restFoods ,
+            requestDate : startDate,
+        }
         console.log('delete okkk', _id, foodStatus, food);
 
         axios.delete(`${import.meta.env.VITE_URL}/allFoodsdelete/${_id}`)
@@ -142,7 +146,7 @@ const FoodDetails = () => {
                                                 <span className="label-text font-medium">Request Date/Time :</span>
                                             </label>
                                         </div>
-                                        <DatePicker dateFormat="dd/MM/YYYY" readOnly className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
+                                        <DatePicker dateFormat="dd/MM/YYYY" readOnly className=" border border-gray-500 p-3 text-xl rounded-lg" name="requestDate" selected={startDate} onChange={(date) => setStartDate(date)} />
                                         <div className="form-control ">
                                             <label className="label">
                                                 <span className="label-text font-medium">Pickup Location :</span>
