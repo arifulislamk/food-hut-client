@@ -1,17 +1,19 @@
-import { useContext, useState } from "react";
-import { Helmet } from "react-helmet";
-import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useLoaderData } from "react-router-dom";
 
-const AddFood = () => {
-    const [startDate, setStartDate] = useState(new Date());
-    const { user } = useContext(AuthContext)
+const UpdatePages = () => {
+    const food = useLoaderData();
 
-    const handleAddFood = async event => {
-        event.preventDefault();
+    const { _id, foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus } = food;
+
+    console.log(food, foodStatus)
+    const [startDate, setStartDate] = useState(new Date(expiredDate) || new Date());
+
+    const handleUpdate = e => {
+        e.preventDefault()
         const form = event.target;
         const foodName = form.foodname.value;
         const foodQuantity = form.foodquantity.value;
@@ -24,57 +26,43 @@ const AddFood = () => {
         const donatorImage = form.userimage.value;
         const foodStatus = form.foodstatus.value;
         console.log(foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus)
-        const food = {
-            foodName,
-            foodQuantity,
-            foodImage,
-            pickupLocation,
-            expiredDate,
-            additionalNotes,
-            donatorName,
-            donatorEmail,
-            donatorImage,
-            foodStatus
+        console.log("updated", _id)
+
+        const updateFood = {
+            foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus
         }
 
-        try {
-            const { data } = await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
-            console.log(data)
-            if (data.insertedId) {
-                toast.success('Food Added Done')
-            }
-        }
-        catch (err) {
-            console.log(err)
-            toast.error('Issuse Founded')
-        }
-
+        axios.put(`${import.meta.env.VITE_URL}/allFoodsupdate/${_id}`, updateFood)
+            .then(res => {
+                console.log(res.data)
+                if(res.data.modifiedCount > 0){
+                    alert('Updated Done')
+                }
+            })
     }
+
     return (
         <div>
-            <Helmet>
-                <title>FOOD HUT | Add Food</title>
-            </Helmet>
-            <form onSubmit={handleAddFood} className="font-algeria card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
-                <h2 className=" text-2xl lg:text-5xl text-center font-extrabold">Add Food</h2>
+            <form onSubmit={handleUpdate} className="font-algeria card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
+                <h2 className=" text-2xl lg:text-5xl text-center font-extrabold">Update Your Food</h2>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-xl font-medium">Food Name :</span>
                     </label>
-                    <input type="text" name="foodname" placeholder="Food Name" className="input input-bordered" required />
+                    <input type="text" defaultValue={foodName} name="foodname" placeholder="Food Name" className="input input-bordered" required />
                 </div>
                 <div className=" flex gap-5 ">
                     <div className="form-control md:w-1/2 ">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Food Quantity :</span>
                         </label>
-                        <input type="text" name="foodquantity" placeholder="Food Quantity" className="input input-bordered" required />
+                        <input type="text" defaultValue={foodQuantity} name="foodquantity" placeholder="Food Quantity" className="input input-bordered" required />
                     </div>
                     <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Food Image</span>
                         </label>
-                        <input type="text" name="foodimage" placeholder="Food Image" className="input input-bordered" required />
+                        <input type="text" defaultValue={foodImage} name="foodimage" placeholder="Food Image" className="input input-bordered" required />
                     </div>
                 </div>
                 <div className=" flex gap-5 ">
@@ -82,7 +70,7 @@ const AddFood = () => {
                         <label className="label">
                             <span className="label-text text-xl font-medium">Pickup Location :</span>
                         </label>
-                        <input type="text" name="pickuplocation" placeholder="Pickup Location" className="input input-bordered" required />
+                        <input type="text" defaultValue={pickupLocation} name="pickuplocation" placeholder="Pickup Location" className="input input-bordered" required />
                     </div>
                     <div className="form-control md:w-1/2">
                         <label className="label">
@@ -97,7 +85,7 @@ const AddFood = () => {
                         <span className="label-text text-xl font-medium">Additional Notes :</span>
                     </label>
 
-                    <textarea cols={10} rows={5} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border border-gray-500 rounded-lg"></textarea>
+                    <textarea defaultValue={additionalNotes} cols={10} rows={5} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border border-gray-500 rounded-lg"></textarea>
                 </div>
 
                 <div className=" flex justify-between">
@@ -105,13 +93,13 @@ const AddFood = () => {
                         <label className="label">
                             <span className="label-text">Donator Name :</span>
                         </label>
-                        <input type="text" defaultValue={user.displayName} name="name" placeholder="User Name" className="input input-bordered" required />
+                        <input type="text" defaultValue={donatorName} name="name" placeholder="User Name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Donator Email :</span>
                         </label>
-                        <input type="text" defaultValue={user.email} name="email" placeholder="User Email" className="input input-bordered" required />
+                        <input defaultValue={donatorEmail} type="text" name="email" placeholder="User Email" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control">
@@ -119,7 +107,7 @@ const AddFood = () => {
                             <span className="label-text">Donator Image :</span>
                         </label>
 
-                        <input type="text" defaultValue={user.photoURL} name="userimage" placeholder="User Image" className="input input-bordered" required />
+                        <input defaultValue={donatorImage} type="text" name="userimage" placeholder="User Image" className="input input-bordered" required />
                     </div>
                 </div>
                 <div className="form-control">
@@ -129,12 +117,11 @@ const AddFood = () => {
                     <input type="text" defaultValue="available" name="foodstatus" placeholder="Food Status" className="input input-bordered" required />
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-secondary">Add Food</button>
+                    <button className="btn btn-secondary">Update Food</button>
                 </div>
             </form>
-            <ToastContainer />
         </div>
     );
 };
 
-export default AddFood;
+export default UpdatePages;

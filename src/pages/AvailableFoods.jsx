@@ -27,7 +27,7 @@ const AvailableFoods = () => {
             <h2 className="text-center">AvailableFoods section : {foods.length} </h2>
             <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                    foods.map(food => <div key={food.foodname} className="card card-compact bg-base-100 shadow-xl">
+                    foods.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>
                         <div className="card-body space-y-3">
                             <h2 className="card-title">{food.foodName}</h2>

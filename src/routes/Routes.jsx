@@ -10,6 +10,7 @@ import MyFoodRequest from "../pages/MyFoodRequest";
 import HiddenRoutes from "./HiddenRoutes";
 import FoodDetails from "../pages/FoodDetails";
 import ErrorPage from "../pages/ErrorPage";
+import UpdatePages from "../pages/UpdatePages";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
                 path: "/foodDetails/:id",
                 element: <HiddenRoutes><FoodDetails /></HiddenRoutes>,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_URL}/allFoods/${params.id}`)
+            },
+            {
+                path: "/updatedPages/:id",
+                element: <UpdatePages></UpdatePages> ,
+                loader : ({params})=> fetch(`${import.meta.env.VITE_URL}/allFoods/${params.id}`) 
             },
             {
                 path: "/login",

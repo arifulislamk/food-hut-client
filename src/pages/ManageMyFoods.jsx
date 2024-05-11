@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const ManageMyFoods = () => {
     const { user } = useContext(AuthContext)
@@ -55,7 +56,9 @@ const ManageMyFoods = () => {
                                     <td><img className="w-[70px] rounded-lg" src={food.foodImage} alt="" /></td>
                                     <td>{food.foodName}</td>
                                     <td>{food.foodQuantity}</td>
-                                    <td><button className="btn btn-info hover:btn-ghost">Update</button></td>
+                                    <td> <Link to={`/updatedPages/${food._id}`}>
+                                    <button className="btn btn-info hover:btn-ghost">Update</button>
+                                    </Link></td>
                                     <td><button onClick={() => handleDeleteFood(food._id)} className="btn btn-error hover:btn-ghost">X</button></td>
                                 </tr>)
                             }

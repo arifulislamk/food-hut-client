@@ -46,6 +46,7 @@ const FoodDetails = () => {
                     <div className=" w-2/3">
                         <img className="w-full lg:h-[500px] rounded-lg" src={foodImage} alt="" />
                     </div>
+                    
                     <div className="text-xl flex flex-col justify-between lg:px-10">
                         <div className=" flex items-center gap-10">
                             <div className=" space-y-5">
@@ -62,14 +63,14 @@ const FoodDetails = () => {
                             <div className="mb-5 space-y-5 flex-grow">
                                 <p> <span className="text-2xl font-medium mr-5"> Food Name : {foodName} </span> </p>
                                 <p> <span className="text-2xl font-medium mr-5">Quantity : </span> {foodQuantity}</p>
-                                <p> <span className="text-2xl font-medium mr-5">Expire Date/Time :</span> {expiredDate}</p>
+                                <p> <span className="text-2xl font-medium mr-5">Expire Date/Time :</span> {new Date(expiredDate).toLocaleDateString()}</p>
                             </div>
                             {/* <button className="btn w-full bg-secondary ">Request</button> */}
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
                             <button className="btn  bg-secondary" onClick={() => document.getElementById('my_modal_2').showModal()}>Request</button>
                             <dialog id="my_modal_2" className="modal">
-                                <div className="modal-box">
-                                    <form onSubmit={handleRequest} className="font-algeria card-body mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
+                                <div className="modal-box max-w-[800px]">
+                                    <form onSubmit={handleRequest} className="   font-algeria card-body mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text font-medium">Food Name :</span>
