@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path: "/myFoodRequest",
                 element: <HiddenRoutes><MyFoodRequest /></HiddenRoutes>,
-                loader: () => fetch(`${import.meta.env.VITE_URL}/requestFoods`)
+                // loader: () => fetch(`${import.meta.env.VITE_URL}/requestFoods`)
             },
             {
                 path: "/foodDetails/:id",

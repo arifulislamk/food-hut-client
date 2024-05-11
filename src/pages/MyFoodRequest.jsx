@@ -1,9 +1,21 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const MyFoodRequest = () => {
-    const foods = useLoaderData();
-    console.log(foods)
+    // const foods = useLoaderData();
+    const { user } = useContext(AuthContext)
+    const [foods, setFoods] = useState([]);
+
+    useEffect(() => {
+        axios(`${import.meta.env.VITE_URL}/requestFoods/${user.email}`)
+            .then(res => {
+                setFoods(res.data)
+            })
+    }, [user.email])
+
     return (
         <div>
             <Helmet>

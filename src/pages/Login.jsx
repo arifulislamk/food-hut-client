@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useLocation} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 const Login = () => {
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation()
     const [showpassword, setshowpassword] = useState(false);
 
     const handleLoginbtn = event => {

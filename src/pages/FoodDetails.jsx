@@ -36,8 +36,9 @@ const FoodDetails = () => {
         const { _id, foodStatus, ...restFoods } = foods;
         const food = {
             foodStatus: 'requested',
-            ...restFoods ,
-            requestDate : startDate,
+            ...restFoods,
+            requestDate: startDate,
+            requestEmail: user.email,
         }
         console.log('delete okkk', _id, foodStatus, food);
 

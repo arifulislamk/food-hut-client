@@ -6,13 +6,13 @@ const HiddenRoutes = ({ children }) => {
     const { loading, user } = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-        return <h2>loading .....</h2>
+        return <div className=" mt-6 flex justify-center"><span className="loading text-yellow-400 loading-spinner loading-lg"></span></div>
     }
-    if (user) {
+    else if (user) {
         return children
     }
 
-    return <Navigate to="/login" state={location.pathname}></Navigate>
+    return <Navigate state={location.pathname} to="/login" replace={true}></Navigate>
 };
 
 export default HiddenRoutes;
