@@ -7,15 +7,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const FoodDetails = () => {
+
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
     const foods = useLoaderData();
-    // const { id } = useParams()
 
+    // const { id } = useParams()
     // // const intId = parseInt(id)
     // console.log(foods, id);
-
     // const spots = foods.find(spot => spot._id == id);
+
     const {
         _id,
         foodName,
@@ -42,19 +43,22 @@ const FoodDetails = () => {
                 <title className="">FOOD HUT | {foodName}</title>
             </Helmet>
             <Fade cascade duration={1000}>
+
                 <div className=" flex">
                     <div className=" w-2/3">
                         <img className="w-full lg:h-[500px] rounded-lg" src={foodImage} alt="" />
                     </div>
-                    
+
                     <div className="text-xl flex flex-col justify-between lg:px-10">
                         <div className=" flex items-center gap-10">
+
                             <div className=" space-y-5">
                                 <h1 className=" font-bold text-center text-red-500">Donar Information</h1>
                                 <p><span className=" mr-6"> Name :</span> {donatorName ? donatorName : "Name Not Found"}</p>
                                 <p> <span className=" mr-6">Email : </span> {donatorEmail ? donatorEmail : "email not found"}</p>
                                 <p> <span className=" mr-6">Pickup Location : </span> {pickupLocation ? pickupLocation : "location not found"}</p>
                             </div>
+
                             <div>
                                 <img className=" rounded-full" src={donatorImage} alt="" />
                             </div>
@@ -63,7 +67,11 @@ const FoodDetails = () => {
                             <div className="mb-5 space-y-5 flex-grow">
                                 <p> <span className="text-2xl font-medium mr-5"> Food Name : {foodName} </span> </p>
                                 <p> <span className="text-2xl font-medium mr-5">Quantity : </span> {foodQuantity}</p>
-                                <p> <span className="text-2xl font-medium mr-5">Expire Date/Time :</span> {new Date(expiredDate).toLocaleDateString()}</p>
+                                <p> <span className="text-2xl font-medium mr-5">Expire Date/Time :</span> {new Date(expiredDate).toLocaleDateString('en-GB', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric'
+                                })}</p>
                             </div>
                             {/* <button className="btn w-full bg-secondary ">Request</button> */}
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -113,7 +121,7 @@ const FoodDetails = () => {
                                                 <span className="label-text font-medium">Request Date/Time :</span>
                                             </label>
                                         </div>
-                                        <DatePicker readOnly className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
+                                        <DatePicker dateFormat="dd/MM/YYYY" readOnly className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
                                         <div className="form-control ">
                                             <label className="label">
                                                 <span className="label-text font-medium">Pickup Location :</span>
@@ -125,7 +133,7 @@ const FoodDetails = () => {
                                             <label className="label">
                                                 <span className="label-text font-medium">Expire Date/Time :</span>
                                             </label>
-                                            <DatePicker readOnly defaultValue={expiredDate} className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={expiredDate} onChange={(date) => setStartDate(date)} />
+                                            <DatePicker dateFormat="dd/MM/YYYY" readOnly defaultValue={expiredDate} className=" border border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={expiredDate} onChange={(date) => setStartDate(date)} />
                                         </div>
                                         <div className="form-control">
                                             <label className="label">
