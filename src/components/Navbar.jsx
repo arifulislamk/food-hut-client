@@ -29,7 +29,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to="/"><button className=" btn text-3xl font-extrabold">FOOD HUT</button></Link>
+                <Link to="/"><img className=" w-48 rounded-lg hover:btn" src='https://i.ibb.co/ZgpbBQg/Screenshot-2024-05-11-005112.png' alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
