@@ -1,28 +1,41 @@
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
-    const [loading, setLoading] = useState(true);
-    const [foods, setFoods] = useState([])
-    useEffect(() => {
-        axios(`${import.meta.env.VITE_URL}/allFoods`)
-            .then(res => {
-                console.log(res.data, 'from featured food')
-                setFoods(res.data)
-                setLoading(false)
-            })
-    }, [])
+    // const [loading, setLoading] = useState(true);
+    // const [foods, setFoods] = useState([])
+    // useEffect(() => {
+    //     axios(`${import.meta.env.VITE_URL}/allFoods`)
+    //         .then(res => {
+    //             console.log(res.data, 'from featured food')
+    //             setFoods(res.data)
+    //             setLoading(false)
+    //         })
+    // }, [])
+
+    const { isLoading, data: foods } = useQuery({
+        queryKey: ['foods'],
+        queryFn: async () => {
+            return await axios(`${import.meta.env.VITE_URL}/allFoods`)
+                .then(res => res.data)
+        }
+    })
+
+    // console.log(data, foods)
+    if(isLoading){
+        return <div className=" mt-6 flex justify-center"><span className="loading w-24 text-yellow-400 loading-spinner "></span></div>
+    }
+
     return (
         <div>
             <h2 className=" text-center text-5xl mb-10">Featured Foods </h2>
 
-            {
-                loading && <div className=" mt-6 flex justify-center"><span className="loading w-24 text-yellow-400 loading-spinner loading-lg"></span></div>
-            }
             <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                    foods.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
+                    foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>
                         <div className="card-body space-y-3">
                             <h2 className="card-title">{food.foodName}</h2>
