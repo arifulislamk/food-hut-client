@@ -49,7 +49,7 @@ const AvailableFoods = () => {
             <Helmet>
                 <title>FOOD HUT | Available Foods</title>
             </Helmet>
-            <h2 className="text-center text-5xl font-medium mt-5">Available Foods section </h2>
+            <h2 className="font-poppins font-medium text-center text-5xl  mt-5">Available Foods section </h2>
             <div className=" flex justify-between mb-10 mt-10 ">
                 <div className=" flex gap-10">
                     <div>
@@ -104,7 +104,7 @@ const AvailableFoods = () => {
                     foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>
                         <div className="card-body space-y-3">
-                            <h2 className="card-title">{food.foodName}</h2>
+                            <h2 className="font-poppins font-medium card-title">{food.foodName}</h2>
                             <p> Quantity : {food.foodQuantity}</p>
                             <p> Pickup : {food.pickupLocation}</p>
                             <p> Expired Date/Time :  {new Date(food.expiredDate).toLocaleDateString('en-GB', {

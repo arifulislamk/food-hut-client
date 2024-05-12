@@ -11,6 +11,7 @@ import HiddenRoutes from "./HiddenRoutes";
 import FoodDetails from "../pages/FoodDetails";
 import ErrorPage from "../pages/ErrorPage";
 import UpdatePages from "../pages/UpdatePages";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -46,8 +47,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "/updatedPages/:id",
-                element: <UpdatePages></UpdatePages> ,
-                loader : ({params})=> fetch(`${import.meta.env.VITE_URL}/allFoods/${params.id}`) 
+                element: <UpdatePages></UpdatePages>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_URL}/allFoods/${params.id}`)
+            },
+            {
+                path: "/contactUs",
+                element: <ContactUs />
             },
             {
                 path: "/login",

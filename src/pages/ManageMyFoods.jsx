@@ -33,7 +33,7 @@ const ManageMyFoods = () => {
             <Helmet>
                 <title>FOOD HUT | Manage My Foods </title>
             </Helmet>
-            <h2 className=" text-5xl text-center font-bold mb-10  mt-5">Manage My Foods</h2>
+            <h2 className="font-poppins font-medium  text-5xl text-center mb-10  mt-5">Manage My Foods</h2>
 
             <div>
                 <div className="overflow-x-auto px-14">

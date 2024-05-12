@@ -10,7 +10,7 @@ const MyFoodRequest = () => {
     const [foods, setFoods] = useState([]);
 
     useEffect(() => {
-        axios(`${import.meta.env.VITE_URL}/requestFoods/${user.email}`)
+        axios(`${import.meta.env.VITE_URL}/requestFoods/${user.email}`,{withCredentials: true })
             .then(res => {
                 setFoods(res.data)
             })

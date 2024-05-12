@@ -65,7 +65,7 @@ const FoodDetails = () => {
             })
     }
     return (
-        <div className="font-algeria space-y-5 mx-4 lg:mx-12 ">
+        <div className="font-open-sans space-y-5 mx-4 lg:mx-12 ">
             <Helmet className="text-sm">
                 <title className="">FOOD HUT | {foodName}</title>
             </Helmet>
@@ -105,7 +105,7 @@ const FoodDetails = () => {
                             <button className="btn  bg-secondary" onClick={() => document.getElementById('my_modal_2').showModal()}>Request</button>
                             <dialog id="my_modal_2" className="modal">
                                 <div className="modal-box max-w-[800px]">
-                                    <form onSubmit={handleRequest} className="   font-algeria card-body mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
+                                    <form onSubmit={handleRequest} className="   font-open-sans card-body mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
                                         <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text font-medium">Food Name :</span>

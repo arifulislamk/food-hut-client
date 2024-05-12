@@ -12,6 +12,7 @@ const Navbar = () => {
                 <li><NavLink to='/manageMyFoods'>Manage My Foods</NavLink></li>
                 <li><NavLink to='/myFoodRequest'>My Food Request</NavLink></li></>
         }
+        <li><NavLink to='/contactUs'>Contact Us</NavLink></li>
     </>
     const handleLogOut = () => {
         logOut()
@@ -23,7 +24,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar shadow-lg bg-base-100">
+        <div className="navbar fixed top-0  z-50 shadow-lg bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

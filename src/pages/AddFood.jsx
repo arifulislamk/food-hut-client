@@ -58,8 +58,8 @@ const AddFood = () => {
             <Helmet>
                 <title>FOOD HUT | Add Food</title>
             </Helmet>
-            <form onSubmit={handleAddFood} className="font-algeria card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
-                <h2 className=" text-2xl lg:text-5xl text-center font-extrabold">Add Food</h2>
+            <form onSubmit={handleAddFood} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
+                <h2 className="font-poppins font-medium  text-2xl lg:text-5xl text-center ">Add Food</h2>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-xl font-medium">Food Name :</span>

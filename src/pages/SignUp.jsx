@@ -48,11 +48,11 @@ const SignUp = () => {
 
     }
     return (
-        <div className="mt-20 font-algeria">
+        <div className="mt-20 font-open-sans">
             <Helmet>
                 <title>FOOD HUT | Sign UP</title>
             </Helmet>
-            <h2 className="mb-4 text-center font-medium text-5xl">Please Register</h2>
+            <h2 className="font-poppins font-medium mb-4 text-center font-medium text-5xl">Please Register</h2>
             <form onSubmit={handleSignUP} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">

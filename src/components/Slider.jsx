@@ -18,13 +18,13 @@ const Slider = () => {
     return (
         <div>
             {/* <!-- slider or curosal  --> */}
-            <div className="font-algeria mt-10 lg:mb-20  rounded-2xl carousel w-full lg:h-[550px] ">
+            <div className="font-open-sans lg:mb-20  rounded-2xl carousel w-full lg:h-[550px] ">
                 {/* <!-- slider 1 --> */}
                 <div id="slide1" className="carousel-item relative w-full">
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className=" text-xl text-secondary lg:text-4xl font-bold">{text1}</h2>
+                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text1}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Sultan Dain
                                 ,
                                 Dhaka</p>
@@ -51,7 +51,7 @@ const Slider = () => {
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className=" text-xl text-secondary lg:text-4xl font-bold">{text2}</h2>
+                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text2}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Red Chicken,
                                 Dhaka-1230</p>
                             <Link to="/foodDetails/662d0e07c8172d24f14b619b">
@@ -77,7 +77,7 @@ const Slider = () => {
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className=" text-xl text-secondary lg:text-4xl font-bold">{text3}</h2>
+                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text3}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Uttara
                                 ,
                                 Dhaka-1230</p>
