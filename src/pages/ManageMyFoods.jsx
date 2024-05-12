@@ -33,7 +33,7 @@ const ManageMyFoods = () => {
             <Helmet>
                 <title>FOOD HUT | Manage My Foods </title>
             </Helmet>
-            <h2>ManageMyFoods section : {foods.length}</h2>
+            <h2 className=" text-5xl text-center font-bold mb-10  mt-5">Manage My Foods</h2>
 
             <div>
                 <div className="overflow-x-auto px-14">
@@ -45,6 +45,7 @@ const ManageMyFoods = () => {
                                 <th>Image</th>
                                 <th>Food Name</th>
                                 <th>Quantity</th>
+                                <th>Status</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -56,6 +57,7 @@ const ManageMyFoods = () => {
                                     <td><img className="w-[70px] rounded-lg" src={food.foodImage} alt="" /></td>
                                     <td>{food.foodName}</td>
                                     <td>{food.foodQuantity}</td>
+                                    <td>{food.foodStatus}</td>
                                     <td> <Link to={`/updatedPages/${food._id}`}>
                                     <button className="btn btn-info hover:btn-ghost">Update</button>
                                     </Link></td>

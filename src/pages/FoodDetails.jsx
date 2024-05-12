@@ -32,21 +32,22 @@ const FoodDetails = () => {
         donatorImage } = foods;
 
     const handleRequest = e => {
-        e.preventDefault()
-        const { _id, foodStatus, ...restFoods } = foods;
+        e.preventDefault();
+        const { _id, additionalNotes, foodStatus, ...restFoods } = foods;
         const food = {
             foodStatus: 'requested',
             ...restFoods,
+            additionalNotes: e.target.additionalnotes.value,
             requestDate: startDate,
             requestEmail: user.email,
         }
-        console.log('delete okkk', _id, foodStatus, food);
+        console.log('delete okkk', _id, foodStatus, food ,additionalNotes);
 
-        axios.delete(`${import.meta.env.VITE_URL}/allFoodsdelete/${_id}`)
+        axios.put(`${import.meta.env.VITE_URL}/allFoodsupdate/${_id}`, food)
             .then(res => {
                 console.log(res.data)
-                if (res.data.deletedCount > 0) {
-                    console.log('deleted')
+                if (res.data.modifiedCount > 0) {
+                    console.log('updateFood done')
 
                     axios.post(`${import.meta.env.VITE_URL}/requestFoods`, food)
                         .then(res => {

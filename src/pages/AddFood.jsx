@@ -11,9 +11,15 @@ const AddFood = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
 
-    const { isError, isSuccess, mutate } = useMutation({
+    const { mutate } = useMutation({
         mutationFn: async (food) => {
             return await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
+        },
+        onSuccess: () => {
+            toast.success('food Added done')
+        },
+        onError: () => {
+            toast.error('error fount')
         }
     })
 
@@ -57,12 +63,6 @@ const AddFood = () => {
         //     toast.error('Issuse Founded')
         // }
 
-    }
-    if (isSuccess) {
-        toast.success('food Added done')
-    }
-    if (isError) {
-        toast.error('Some Things Wrong')
     }
 
     return (
