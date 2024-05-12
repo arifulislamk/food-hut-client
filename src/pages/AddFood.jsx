@@ -5,10 +5,17 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useMutation } from "@tanstack/react-query";
 
 const AddFood = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+
+    const { isError, isSuccess, mutate } = useMutation({
+        mutationFn: async (food) => {
+            return await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
+        }
+    })
 
     const handleAddFood = async event => {
         event.preventDefault();
@@ -37,19 +44,27 @@ const AddFood = () => {
             foodStatus
         }
 
-        try {
-            const { data } = await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
-            console.log(data)
-            if (data.insertedId) {
-                toast.success('Food Added Done')
-            }
-        }
-        catch (err) {
-            console.log(err)
-            toast.error('Issuse Founded')
-        }
+        mutate(food)
+        // try {
+        //     const { data } = await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
+        //     console.log(data)
+        //     if (data.insertedId) {
+        //         toast.success('Food Added Done')
+        //     }
+        // }
+        // catch (err) {
+        //     console.log(err)
+        //     toast.error('Issuse Founded')
+        // }
 
     }
+    if (isSuccess) {
+        toast.success('food Added done')
+    }
+    if (isError) {
+        toast.error('Some Things Wrong')
+    }
+
     return (
         <div>
             <Helmet>

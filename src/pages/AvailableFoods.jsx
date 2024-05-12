@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import {  useState } from "react";
 import { Helmet } from "react-helmet";
 import { BsLayoutThreeColumns } from "react-icons/bs";
 import { LuColumns } from "react-icons/lu";
@@ -8,23 +8,37 @@ import { Link } from "react-router-dom";
 const AvailableFoods = () => {
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
-    const [foods, setFoods] = useState([]);
+    // const [foods, setFoods] = useState([]);
     const [sort, setSort] = useState('');
 
-    const [toggle, setToggle] = useState(false)
-    useEffect(() => {
-        const getData = async () => {
-            // const { data } = await axios(`${import.meta.env.VITE_URL}/allFoods`)
-            // console.log(data)
-            // setFoods(data)
-            const { data } = await axios(
-                `${import.meta.env.VITE_URL}/all-foods?search=${search}&sort=${sort}`
-            )
-            setFoods(data)
-        }
-        getData()
-    }, [search, sort])
+    const [toggle, setToggle] = useState(true)
 
+    const { isLoading, data: foods } = useQuery({
+        queryKey: ['foods', search, sort],
+        queryFn: async () => {
+            return await fetch(`${import.meta.env.VITE_URL}/all-foods?search=${search}&sort=${sort}`)
+                .then(res => res.json())
+        }
+    })
+
+
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         // const { data } = await axios(`${import.meta.env.VITE_URL}/allFoods`)
+    //         // console.log(data)
+    //         // setFoods(data)
+    //         const { data } = await axios(
+    //             `${import.meta.env.VITE_URL}/all-foods?search=${search}&sort=${sort}`
+    //         )
+    //         setFoods(data)
+    //     }
+    //     getData()
+    // }, [search, sort])
+
+    if (isLoading) {
+        return <div className=" mt-6 flex justify-center"><span className="loading w-20 text-yellow-400 loading-spinner "></span></div>
+    }
     const handleSearchbtn = e => {
         e.preventDefault();
         console.log('search ok', searchText)
@@ -68,15 +82,15 @@ const AvailableFoods = () => {
                             id='sort'
                             className='border p-4 rounded-md'
                         >
-                            <option value=''>Sort By Deadline</option>
-                            <option value='dsc'>Descending Order</option>
-                            <option value='asc'>Ascending Order</option>
+                            <option value=''>Sort By Expired Date</option>
+                            <option value='dsc'>Descending</option>
+                            <option value='asc'>Ascending</option>
                         </select>
                     </div>
 
                 </div>
                 <div>
-                    <button  data-tip="Layout Three Colums" onClick={() => setToggle(!toggle)} className={"btn bg-yellow-300 tooltip " + (!toggle ? 'show' : 'hidden')}>
+                    <button data-tip="Layout Three Colums" onClick={() => setToggle(!toggle)} className={"btn bg-yellow-300 tooltip " + (!toggle ? 'show' : 'hidden')}>
                         <BsLayoutThreeColumns className="w-[50px] h-10" /></button>
 
                     <button data-tip="Layout Two Colums" onClick={() => setToggle(!toggle)} className={"btn bg-red-400 tooltip " + (toggle ? 'show' : 'hidden')}>
@@ -87,7 +101,7 @@ const AvailableFoods = () => {
             {/* all foods Card  */}
             <div className={"grid lg:grid-cols-3 " + (toggle ? 'gap-5' : 'lg:grid-cols-2 gap-10')}>
                 {
-                    foods.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
+                    foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>
                         <div className="card-body space-y-3">
                             <h2 className="card-title">{food.foodName}</h2>

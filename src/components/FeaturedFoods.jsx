@@ -1,7 +1,6 @@
 // import axios from "axios";
 // import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
@@ -19,14 +18,14 @@ const FeaturedFoods = () => {
     const { isLoading, data: foods } = useQuery({
         queryKey: ['foods'],
         queryFn: async () => {
-            return await axios(`${import.meta.env.VITE_URL}/allFoods`)
-                .then(res => res.data)
+            return await fetch(`${import.meta.env.VITE_URL}/allFoods`)
+                .then(res => res.json())
         }
     })
 
     // console.log(data, foods)
-    if(isLoading){
-        return <div className=" mt-6 flex justify-center"><span className="loading w-24 text-yellow-400 loading-spinner "></span></div>
+    if (isLoading) {
+        return <div className=" mt-6 flex justify-center"><span className="loading w-20 text-yellow-400 loading-spinner "></span></div>
     }
 
     return (
