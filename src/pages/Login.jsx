@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
-import { Link, useNavigate ,useLocation} from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
@@ -23,6 +24,11 @@ const Login = () => {
         loginUser(email, password)
             .then(res => {
                 console.log(res.user)
+                const user = { email }
+                axios.post(`${import.meta.env.VITE_URL}/jwt`, user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 Swal.fire({
                     title: 'Login Success',
                     text: 'Do you want to continue',
@@ -41,7 +47,12 @@ const Login = () => {
         console.log('google')
         googleLogin()
             .then(res => {
-                console.log(res.user)
+                const email = res.user.email
+                const user = { email }
+                axios.post(`${import.meta.env.VITE_URL}/jwt`, user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data, 'serect')
+                    })
                 Swal.fire({
                     title: 'Login With Google',
                     icon: 'success',
@@ -57,6 +68,12 @@ const Login = () => {
     const handleGithubLogin = () => {
         githubLogin()
             .then(res => {
+                const email = res.user.email
+                const user = { email }
+                axios.post(`${import.meta.env.VITE_URL}/jwt`, user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data, 'serect')
+                    })
                 Swal.fire({
                     title: 'Login With Github',
                     icon: 'success',

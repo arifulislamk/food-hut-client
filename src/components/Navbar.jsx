@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -16,7 +15,12 @@ const Navbar = () => {
     </>
     const handleLogOut = () => {
         logOut()
-            .then(() => toast.error('LogOut Now'))
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="navbar shadow-lg bg-base-100">
@@ -46,7 +50,6 @@ const Navbar = () => {
                         </>
                 }
             </div>
-            <ToastContainer></ToastContainer>
         </div>
     );
 };

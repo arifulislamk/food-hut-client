@@ -99,7 +99,7 @@ const AvailableFoods = () => {
             </div>
 
             {/* all foods Card  */}
-            <div className={"grid lg:grid-cols-3 " + (toggle ? 'gap-5' : 'lg:grid-cols-2 gap-10')}>
+            <div className={"grid  " + (toggle ? 'gap-5  lg:grid-cols-3' : 'lg:grid-cols-2 gap-10')}>
                 {
                     foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>

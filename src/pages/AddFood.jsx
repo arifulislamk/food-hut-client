@@ -51,18 +51,6 @@ const AddFood = () => {
         }
 
         mutate(food)
-        // try {
-        //     const { data } = await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
-        //     console.log(data)
-        //     if (data.insertedId) {
-        //         toast.success('Food Added Done')
-        //     }
-        // }
-        // catch (err) {
-        //     console.log(err)
-        //     toast.error('Issuse Founded')
-        // }
-
     }
 
     return (

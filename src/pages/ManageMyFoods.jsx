@@ -9,7 +9,7 @@ const ManageMyFoods = () => {
     const [foods, setMyFoods] = useState([])
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_URL}/allFood/${user.email}`)
+            const { data } = await axios(`${import.meta.env.VITE_URL}/allFood/${user.email}`,{withCredentials: true})
             console.log(data)
             setMyFoods(data)
         }
