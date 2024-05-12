@@ -52,11 +52,12 @@ const AuthProvider = ({ children }) => {
             unSubscribe()
         }
 
-    }, [])
+    }, [auth])
 
     const providerInfo = {
         user,
         loading,
+        setLoading,
         createUser,
         updateUser,
         loginUser,
