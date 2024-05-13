@@ -9,13 +9,13 @@ const ContactUs = () => {
                 <h2 className="font-poppins mb-5 mt-20 text-4xl font-bold  lg:text-5xl">Let`s talk!</h2>
                 <div className=" text-3xl font-poppins font-medium">FOOD HUT Official Help Desk</div>
             </div>
-            <div className="flex gap-10 justify-center items-center ">
-                <div className="flex flex-col justify-center w-1/2 ">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-10 justify-center items-center ">
+                <div className="flex flex-col justify-center md:w-1/2 ">
                     <div className="mt-10">
                         <img className=" border rounded-2xl " src="https://i.ibb.co/HPM225Z/THAILAND-22.png" alt="" />
                     </div>
                 </div>
-                <div className=" w-1/2">
+                <div className=" md:w-1/2">
                     <form onSubmit={handlecontact} noValidate="" className="space-y-6">
                         <div>
                             <label htmlFor="name" name='name' className="text-xl" >Full name</label>

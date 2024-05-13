@@ -2,11 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdatePages = () => {
     const food = useLoaderData();
-
+    const navigate = useNavigate() ;
     const { _id, foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus } = food;
 
     console.log(food, foodStatus)
@@ -36,7 +37,12 @@ const UpdatePages = () => {
             .then(res => {
                 console.log(res.data)
                 if(res.data.modifiedCount > 0){
-                    alert('Updated Done')
+                    Swal.fire({
+                        title: 'Food Updated done',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    navigate('/manageMyFoods')
                 }
             })
     }
@@ -117,7 +123,7 @@ const UpdatePages = () => {
                     <input type="text" defaultValue="available" name="foodstatus" placeholder="Food Status" className="input input-bordered" required />
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-secondary">Update Food</button>
+                    <button className="btn bg-orange-400  ">Update Food</button>
                 </div>
             </form>
         </div>

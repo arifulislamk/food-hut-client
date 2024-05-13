@@ -24,13 +24,13 @@ const Slider = () => {
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text1}</h2>
+                            <h2 className="font-poppins  text-xl text-secondary lg:text-4xl font-bold">{text1}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Sultan Dain
                                 ,
                                 Dhaka</p>
-                            <Link to="/foodDetails/662d0e07c8172d24f14b619b">
+                            <Link to="/foodDetails/663f495e442329bb0c45555a">
                                 <Slide triggerOnce>
-                                    <button className="btn lg:mt-10 btn-warning text-white">View Details</button>
+                                    <button className="btn lg:mt-10 bg-orange-400  text-white">View Details</button>
                                 </Slide>
                             </Link>
 
@@ -51,12 +51,12 @@ const Slider = () => {
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text2}</h2>
+                            <h2 className="font-poppins   text-xl text-secondary lg:text-4xl font-bold">{text2}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Red Chicken,
                                 Dhaka-1230</p>
-                            <Link to="/foodDetails/662d0e07c8172d24f14b619b">
+                            <Link to="/foodDetails/663f49b1442329bb0c45555b">
                                 <Slide triggerOnce>
-                                    <button className="btn lg:mt-10 btn-warning text-white">View Details</button>
+                                    <button className="btn lg:mt-10 bg-orange-400  text-white">View Details</button>
                                 </Slide>
                             </Link>
 
@@ -77,13 +77,13 @@ const Slider = () => {
                     <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                         <div className="space-y-7 flex-1">
 
-                            <h2 className="font-poppins font-medium  text-xl text-secondary lg:text-4xl font-bold">{text3}</h2>
+                            <h2 className="font-poppins text-xl text-secondary lg:text-4xl font-bold">{text3}</h2>
                             <p className=" text-2xl lg:text-4xl font-medium text-error "> Uttara
                                 ,
                                 Dhaka-1230</p>
-                            <Link to="/foodDetails/662d0e07c8172d24f14b619b">
+                            <Link to="/foodDetails/663f4a4e442329bb0c45555e">
                                 <Slide triggerOnce>
-                                    <button className="btn lg:mt-10 btn-warning text-white">View Details</button>
+                                    <button className="btn lg:mt-10 bg-orange-400  text-white">View Details</button>
                                 </Slide>
                             </Link>
 

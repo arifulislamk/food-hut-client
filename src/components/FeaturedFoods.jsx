@@ -30,9 +30,9 @@ const FeaturedFoods = () => {
 
     return (
         <div>
-            <h2 className="font-poppins font-medium  text-center text-5xl mb-10">Featured Foods </h2>
+            <h2 className="font-poppins font-medium  text-center text-2xl md:text-3xl  lg:text-5xl mb-10">Featured Foods </h2>
 
-            <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
                 {
                     foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>
@@ -53,7 +53,7 @@ const FeaturedFoods = () => {
                                     <p className=" text-xl">{food.donatorName}</p>
                                 </div>
                                 <Link to={`/foodDetails/${food._id}`}>
-                                    <button className="btn btn-secondary">View Details</button>
+                                    <button className="btn bg-orange-400  ">View Details</button>
                                 </Link>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ const FeaturedFoods = () => {
                 }
             </div>
             <div className=" text-center mt-10">
-                <Link to='/availableFoods'><button className="btn btn-warning">Show All</button></Link>
+                <Link to='/availableFoods'><button className="btn bg-orange-400 ">Show All</button></Link>
             </div>
         </div>
     );

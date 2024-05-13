@@ -27,7 +27,7 @@ const MyFoodRequest = () => {
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr className=" text-xl font-bold">
+                            <tr className=" bg-gray-300  text-xl font-bold">
                                 <th>No</th>
                                 <th>Image</th>
                                 <th>Food Name</th>

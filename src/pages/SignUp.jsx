@@ -22,7 +22,35 @@ const SignUp = () => {
         const password = form.password.value;
         console.log(name, email, password, photo)
 
+        if (!name) {
+            toast.error('Please Input Name')
+            return;
+        }
+        else if (!email) {
+            toast.error('Please Input email')
+            return;
+        }
+        else if (!photo) {
+            toast.error('Please Input photo')
+            return;
+        }
+        else if (!password) {
+            toast.error('Please Input password')
+            return;
+        }
 
+        else if (password.length < 6) {
+            toast.error('password must be at least 6 charecter or more charecter!')
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Password Shounld be uppercase at least one charecter')
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error('Password Shounld be lowwercase at least one charecter')
+            return;
+        }
         createUser(email, password)
             .then(res => {
                 console.log(res.user);
@@ -52,7 +80,7 @@ const SignUp = () => {
             <Helmet>
                 <title>FOOD HUT | Sign UP</title>
             </Helmet>
-            <h2 className="font-poppins font-medium mb-4 text-center font-medium text-5xl">Please Register</h2>
+            <h2 className="font-poppins font-medium mb-4 text-center text-5xl">Please Register</h2>
             <form onSubmit={handleSignUP} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
@@ -85,7 +113,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-secondary text-2xl font-medium">Register</button>
+                    <button className="btn bg-orange-400   text-2xl font-medium">Register</button>
                 </div>
                 <div>
                     <p className=" text-xl">Already have an account? Please <Link className="text-blue-500 font-medium" to="/login">Login</Link></p>

@@ -170,7 +170,7 @@ const FoodDetails = () => {
                                             <textarea defaultValue={additionalNotes} cols={5} rows={2} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border border-gray-500 rounded-lg"></textarea>
                                         </div>
                                         <div className="form-control mt-2">
-                                            <button className="btn btn-secondary">Request</button>
+                                            <button className="btn bg-orange-400  ">Request</button>
                                         </div>
                                     </form>
                                 </div>

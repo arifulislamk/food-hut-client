@@ -4,7 +4,7 @@ const ErrorPage = () => {
     return (
         <div className="text-center lg:mt-10">
             <div className="flex flex-col-reverse lg:flex-row lg:gap-32 px-8">
-                <Link to="/"><button className=" lg:text-2xl bg-orange-300 p-3  rounded-lg">Please Go back</button></Link>
+                <Link to="/"><button className=" lg:text-2xl bg-orange-400 p-3  rounded-lg">Please Go back</button></Link>
                 <h1 className="text-2xl mb-4  lg:text-5xl font-bold">Ooops! You are may be wrong!</h1>
             </div>
 

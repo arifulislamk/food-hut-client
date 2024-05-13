@@ -6,17 +6,25 @@ import { ToastContainer, toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddFood = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { mutate } = useMutation({
         mutationFn: async (food) => {
             return await axios.post(`${import.meta.env.VITE_URL}/allFoods`, food)
         },
         onSuccess: () => {
-            toast.success('food Added done')
+            navigate('/manageMyFoods');
+            Swal.fire({
+                title: 'Food Added done',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
         },
         onError: () => {
             toast.error('error fount')
@@ -132,7 +140,7 @@ const AddFood = () => {
                     <input type="text" defaultValue="available" name="foodstatus" placeholder="Food Status" className="input input-bordered" required />
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-secondary">Add Food</button>
+                    <button className="btn bg-orange-400  ">Add Food</button>
                 </div>
             </form>
             <ToastContainer />
