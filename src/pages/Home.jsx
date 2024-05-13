@@ -3,6 +3,7 @@ import Slider from "../components/Slider";
 import FeaturedFoods from "../components/FeaturedFoods";
 import ContactUs from "./ContactUs";
 import Accorodian from "../components/Accorodian";
+import Top from "../components/Top";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
 
             <Slider />
             <FeaturedFoods />
+            <Top />
             <Accorodian />
             <ContactUs />
         </div>

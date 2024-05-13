@@ -10,7 +10,7 @@ const Accorodian = () => {
                         <details className=" text-xl">
                             <summary className="py-2 outline-none cursor-pointer focus:underline">Can I customize my order?</summary>
                             <div className="px-4 pb-4">
-                                <p>Absolutely! We understand that everyone has unique tastes and dietary needs. You can customize your order to your liking, whether it's adjusting spice levels, swapping ingredients, or accommodating allergies</p>
+                                <p>Absolutely! We understand that everyone has unique tastes and dietary needs. You can customize your order to your liking, whether it`s adjusting spice levels, swapping ingredients, or accommodating allergies</p>
                             </div>
                         </details>
                         <details className=" text-xl ">

@@ -61,7 +61,7 @@ const FeaturedFoods = () => {
                 }
             </div>
             <div className=" text-center mt-10">
-                <Link to='/availableFoods'><button className="btn bg-orange-400 ">Show All</button></Link>
+                <Link to='/availableFoods'><button className="btn btn-warning text-white ">Show All</button></Link>
             </div>
         </div>
     );
