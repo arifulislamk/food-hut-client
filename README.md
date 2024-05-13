@@ -24,6 +24,7 @@
 
 
 #  All npm package name
+- react-hook-from(useForm) : i used One of the key concepts in React Hook Form is to register your component into the SignUp section. 
 
 - Tanstack Queary(useQuery, useMutation) : TanStack Query is an open-source JavaScript library created by TanStack that simplifies data fetching and state management in React applications.
 

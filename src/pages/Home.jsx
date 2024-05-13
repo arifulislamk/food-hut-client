@@ -11,7 +11,6 @@ const Home = () => {
             <Helmet>
                 <title>FOOD HUT | Home</title>
             </Helmet>
-
             <Slider />
             <FeaturedFoods />
             <Top />

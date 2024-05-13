@@ -6,39 +6,31 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
 
 
 const SignUp = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate()
     const { createUser, updateUser } = useContext(AuthContext);
     const [showpassword, setshowpassword] = useState(false);
 
-    const handleSignUP = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const photo = form.photo.value;
-        const password = form.password.value;
+    const handleSignUP = form => {
+        console.log(form)
+        const { name, email, password, photo } = form;
+        // event.preventDefault();
+        // const form = event.target;
+        // const name = form.name.value;
+        // const email = form.email.value;
+        // const photo = form.photo.value;
+        // const password = form.password.value;
         console.log(name, email, password, photo)
 
-        if (!name) {
-            toast.error('Please Input Name')
-            return;
-        }
-        else if (!email) {
-            toast.error('Please Input email')
-            return;
-        }
-        else if (!photo) {
-            toast.error('Please Input photo')
-            return;
-        }
-        else if (!password) {
+
+       if (!password) {
             toast.error('Please Input password')
             return;
         }
-
         else if (password.length < 6) {
             toast.error('password must be at least 6 charecter or more charecter!')
             return;
@@ -81,31 +73,34 @@ const SignUp = () => {
                 <title>FOOD HUT | Sign UP</title>
             </Helmet>
             <h2 className="font-poppins font-medium mb-4 text-center text-5xl">Please Register</h2>
-            <form onSubmit={handleSignUP} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
+            <form onSubmit={handleSubmit(handleSignUP)} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Name</span>
                     </label>
-                    <input type="text" name="name" placeholder="Your Name" className="input input-bordered" />
+                    <input {...register('name', { required: 'invaild name', minLength: { value: 4, message: 'min 4 charecter type Please' }, maxLength: { value: 10, message: 'max 10 charecter type' } })} type="text" placeholder="Your Name" className={errors?.name?.message ? 'border border-red-500  p-3 rounded-lg' : ' input  input-bordered'} />
+                    <p>{errors?.name?.message}</p>
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Email</span>
                     </label>
-                    <input type="email" name="email" placeholder="Your Email" className="input input-bordered" />
+                    <input {...register('email', { required: 'invalid Email' })} type="email" placeholder="Your Email" className={errors?.email?.message ? 'border border-red-500  p-3 rounded-lg' : ' input  input-bordered'} />
+                    <p>{errors?.email?.message}</p>
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">PhotoURL</span>
                     </label>
-                    <input type="text" name="photo" placeholder="PhotoURL" className="input input-bordered" />
+                    <input {...register('photo', { required: 'invaild PhotoUrl' })} type="text" placeholder="PhotoURL" className={errors?.photo?.message ? 'border border-red-500  p-3 rounded-lg' : ' input  input-bordered'} />
+                    <p>{errors?.photo?.message}</p>
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Password</span>
                     </label>
                     <div className="mb-4 relative" >
-                        <input placeholder="New Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
+                        <input {...register('password')} placeholder="New Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
                             type={showpassword ? 'text' : 'password'} name="password" id="" />
                         <span className="absolute top-3 right-4 " onClick={() => { setshowpassword(!showpassword) }}>
                             {showpassword ? <LuEyeOff /> : <LuEye />}
