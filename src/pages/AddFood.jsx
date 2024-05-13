@@ -66,7 +66,7 @@ const AddFood = () => {
             <Helmet>
                 <title>FOOD HUT | Add Food</title>
             </Helmet>
-            <form onSubmit={handleAddFood} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
+            <form onSubmit={handleAddFood} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 md:w-5/6 mx-auto">
                 <h2 className="font-poppins font-medium  text-2xl lg:text-5xl text-center ">Add Food</h2>
                 <div className="form-control">
                     <label className="label">
@@ -74,7 +74,7 @@ const AddFood = () => {
                     </label>
                     <input type="text" name="foodname" placeholder="Food Name" className="input input-bordered" required />
                 </div>
-                <div className=" flex gap-5 ">
+                <div className=" flex flex-col md:flex-row gap-5 ">
                     <div className="form-control md:w-1/2 ">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Food Quantity :</span>
@@ -88,7 +88,7 @@ const AddFood = () => {
                         <input type="text" name="foodimage" placeholder="Food Image" className="input input-bordered" required />
                     </div>
                 </div>
-                <div className=" flex gap-5 ">
+                <div className=" flex flex-col md:flex-row gap-5 ">
                     <div className="form-control  md:w-1/2">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Pickup Location :</span>
@@ -111,7 +111,7 @@ const AddFood = () => {
                     <textarea cols={10} rows={5} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border border-gray-500 rounded-lg"></textarea>
                 </div>
 
-                <div className=" flex justify-between">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Donator Name :</span>

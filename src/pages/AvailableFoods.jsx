@@ -51,7 +51,7 @@ const AvailableFoods = () => {
             </Helmet>
             <h2 className="font-poppins font-medium text-center lg:hidden text-2xl mb-5  mt-5">Available Foods section </h2>
 
-            <div className=" flex flex-col md:flex-row md:justify-center items-center md:mb-10 md:mt-10 gap-4 md:gap-20">
+            <div className=" flex flex-col md:flex-row md:justify-center items-center md:mb-10 md:mt-10 gap-5 lg:gap-20">
                 <div>
                     <form onSubmit={handleSearchbtn}>
                         <div className='flex p-1 overflow-hidden border border-gray-500 rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>
@@ -72,7 +72,7 @@ const AvailableFoods = () => {
                     </form>
                 </div>
 
-                <div className=" flex gap-4 items-center md:gap-20">
+                <div className=" flex gap-4 items-center md:gap-6 lg:gap-20">
                     <div>
                         <select
                             onChange={e => {
@@ -90,7 +90,7 @@ const AvailableFoods = () => {
                         </select>
                     </div>
 
-                    <div>
+                    <div className="hidden md:flex">
                         <button data-tip="Layout Three Colums" onClick={() => setToggle(!toggle)} className={" hover:btn-info hover:btn  tooltip " + (!toggle ? 'show' : 'hidden')}>
                             <BsLayoutThreeColumns className="w-[50px] h-10" /></button>
 
@@ -103,7 +103,7 @@ const AvailableFoods = () => {
 
 
             {/* all foods Card  */}
-            <div className={"grid mt-6 " + (toggle ? 'gap-5  md:grid-cols-3' : 'md:grid-cols-2 gap-10')}>
+            <div className={"grid mt-6 " + (toggle ? 'md:gap-5  md:grid-cols-3' : 'md:grid-cols-2 md:gap-10')}>
                 {
                     foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                         <figure><img src={food.foodImage} alt="Shoes" /></figure>

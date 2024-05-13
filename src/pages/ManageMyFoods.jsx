@@ -52,10 +52,10 @@ const ManageMyFoods = () => {
             <Helmet>
                 <title>FOOD HUT | Manage My Foods </title>
             </Helmet>
-            <h2 className="font-poppins font-medium  text-5xl text-center mb-10  mt-5">Manage My Foods</h2>
+            <h2 className="font-poppins font-medium  text-3xl lg:hidden  text-center mb-10  mt-5">Manage My Foods</h2>
 
             <div>
-                <div className="overflow-x-auto px-14">
+                <div className="overflow-x-auto md:px-8 lg:px-14">
                     <table className="table">
                         {/* head */}
                         <thead>

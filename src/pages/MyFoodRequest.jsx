@@ -23,7 +23,7 @@ const MyFoodRequest = () => {
             </Helmet>
 
             <div>
-                <div className="overflow-x-auto px-14">
+                <div className="overflow-x-auto lg:px-14">
                     <table className="table">
                         {/* head */}
                         <thead>
