@@ -69,7 +69,7 @@ const FoodDetails = () => {
             <Helmet className="text-sm">
                 <title className="">FOOD HUT | {foodName}</title>
             </Helmet>
-            <Fade cascade duration={1000}>
+            <Fade cascade duration={2000}>
 
                 <div className=" flex flex-col items-center gap-3 md:flex-row">
                     <div className="  md:w-2/3">

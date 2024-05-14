@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext) ;
+    const [showdropdown, setShowdropdown] = useState(false)
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/availableFoods'>Available Foods</NavLink></li>
@@ -51,10 +52,32 @@ const Navbar = () => {
                 </div>
                 {
                     user ? <>
-                        <button onClick={handleLogOut} className="btn btn-xs md:btn-md bg-orange-400  ">LogOut</button>
+                        {
+                            user && <div
+                                onMouseEnter={() => setShowdropdown(true)}
+                                onMouseLeave={() => setShowdropdown(false)}
+                                className="mr-2  z-10">
+                                <div>
+                                    {
+                                        user?.photoURL ? <img className=" w-10 md:w-[50px] rounded-3xl " src={user.photoURL} alt="" /> : "PhotoNot Availavail this User"
+                                    }
+                                </div>
+
+                                {
+                                    showdropdown && (
+                                        <div className="flex flex-col absolute left-[20%] md:left-[70%] lg:left-[80%]  lg:right-2  bg-blue-300 w-52 shadow-md p-5 rounded-md">
+                                            <p className=" border-b-2 border-black mb-4 text-center font-bold">{user.displayName ? user.displayName : "Name Not Found"}</p>
+                                            <button className=" hover:underline">Profile</button>
+                                            <button onClick={handleLogOut} className="hover:underline ">LogOut</button>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        }
+                        <button onClick={handleLogOut} className="btn hidden md:flex btn-xs md:btn-md bg-orange-400  ">LogOut</button>
                     </> :
                         <>
-                            <Link to="/login"><button className="btn">Login</button></Link>
+                            <Link to="/login" ><button className="btn">Login</button></Link>
                         </>
                 }
             </div>

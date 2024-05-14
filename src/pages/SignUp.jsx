@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors }, watch } = useForm()
     const navigate = useNavigate()
     const { createUser, updateUser } = useContext(AuthContext);
     const [showpassword, setshowpassword] = useState(false);
@@ -27,22 +27,22 @@ const SignUp = () => {
         console.log(name, email, password, photo)
 
 
-       if (!password) {
-            toast.error('Please Input password')
-            return;
-        }
-        else if (password.length < 6) {
-            toast.error('password must be at least 6 charecter or more charecter!')
-            return;
-        }
-        else if (!/[A-Z]/.test(password)) {
-            toast.error('Password Shounld be uppercase at least one charecter')
-            return;
-        }
-        else if (!/[a-z]/.test(password)) {
-            toast.error('Password Shounld be lowwercase at least one charecter')
-            return;
-        }
+        // if (!password) {
+        //     toast.error('Please Input password')
+        //     return;
+        // }
+        // else if (password.length < 6) {
+        //     toast.error('password must be at least 6 charecter or more charecter!')
+        //     return;
+        // }
+        // else if (!/[A-Z]/.test(password)) {
+        //     toast.error('Password Shounld be uppercase at least one charecter')
+        //     return;
+        // }
+        // else if (!/[a-z]/.test(password)) {
+        //     toast.error('Password Shounld be lowwercase at least one charecter')
+        //     return;
+        // }
         createUser(email, password)
             .then(res => {
                 console.log(res.user);
@@ -100,8 +100,31 @@ const SignUp = () => {
                         <span className="label-text text-2xl font-medium">Password</span>
                     </label>
                     <div className="mb-4 relative" >
-                        <input {...register('password')} placeholder="New Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
-                            type={showpassword ? 'text' : 'password'} name="password" id="" />
+                        <input {...register('pass', { pattern: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/ , required: true})} placeholder="New Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
+                            type={showpassword ? 'text' : 'password'} />
+
+                        {
+                            errors?.pass?.type === 'pattern' && <p>Please Type Password at least 6 Charecter, Uppercase(A-Z), Lowercase</p>
+                        }
+                         {errors?.pass?.type === 'required' && <p>Password is required.</p>}
+                        <span className="absolute top-3 right-4 " onClick={() => { setshowpassword(!showpassword) }}>
+                            {showpassword ? <LuEyeOff /> : <LuEye />}
+                        </span>
+                    </div>
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text text-2xl font-medium">Re-Type Password</span>
+                    </label>
+                    <div className="mb-4 relative" >
+                        <input {...register('password', {
+                            validate: data => {
+                                if (watch('pass') !== data)
+                                    return 'Password not match'
+                            }
+                        })} placeholder="Re-Type Password" className={errors?.password?.message ? 'border border-red-500 w-full py-2 px-4  rounded-lg' : ' input w-full py-2 px-4  input-bordered'}
+                            type={showpassword ? 'text' : 'password'} />
+                        <p>{errors?.password?.message}</p>
                         <span className="absolute top-3 right-4 " onClick={() => { setshowpassword(!showpassword) }}>
                             {showpassword ? <LuEyeOff /> : <LuEye />}
                         </span>

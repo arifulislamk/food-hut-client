@@ -1,4 +1,4 @@
-import { Slide } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { useTypewriter } from "react-simple-typewriter";
 
@@ -18,8 +18,9 @@ const Slider = () => {
     return (
         <div>
             {/* <!-- slider or curosal  --> */}
-            <div className="font-open-sans lg:mb-20  rounded-2xl carousel w-full lg:h-[550px] ">
-                {/* <!-- slider 1 --> */}
+            <Fade cascade duration={3000}>
+                <div className="font-open-sans lg:mb-20  rounded-2xl carousel w-full lg:h-[550px] ">
+                    {/* <!-- slider 1 --> */}
                     <div id="slide1" className="carousel-item relative w-full">
                         <div className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                             <div className="space-y-7 flex-1">
@@ -100,7 +101,8 @@ const Slider = () => {
                             <a href="#slide1" className="btn btn-circle">❯</a>
                         </div>
                     </div>
-            </div>
+                </div>
+            </Fade>
         </div >
     );
 };
