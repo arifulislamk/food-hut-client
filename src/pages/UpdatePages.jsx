@@ -4,10 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { motion } from 'framer-motion';
 
 const UpdatePages = () => {
     const food = useLoaderData();
-    const navigate = useNavigate() ;
+    const navigate = useNavigate();
     const { _id, foodName, foodQuantity, foodImage, pickupLocation, expiredDate, additionalNotes, donatorName, donatorEmail, donatorImage, foodStatus } = food;
 
     console.log(food, foodStatus)
@@ -36,7 +37,7 @@ const UpdatePages = () => {
         axios.put(`${import.meta.env.VITE_URL}/allFoodsupdate/${_id}`, updateFood)
             .then(res => {
                 console.log(res.data)
-                if(res.data.modifiedCount > 0){
+                if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Food Updated done',
                         icon: 'success',
@@ -48,7 +49,11 @@ const UpdatePages = () => {
     }
 
     return (
-        <div>
+        <motion.div
+            initial={{ y: 700 }}
+            animate={{ y: 0 }}
+            transition={{delay: .2, type: 'spring', stiffness: 20}}
+        >
             <form onSubmit={handleUpdate} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">
                 <h2 className="font-poppins font-medium  text-2xl lg:text-5xl text-center ">Update Your Food</h2>
                 <div className="form-control">
@@ -126,7 +131,7 @@ const UpdatePages = () => {
                     <button className="btn bg-orange-400  ">Update Food</button>
                 </div>
             </form>
-        </div>
+        </motion.div>
     );
 };
 

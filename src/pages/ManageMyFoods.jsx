@@ -5,6 +5,8 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Fade } from "react-awesome-reveal";
+import { MdDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
 
 const ManageMyFoods = () => {
     const { user } = useContext(AuthContext)
@@ -61,7 +63,7 @@ const ManageMyFoods = () => {
                         <table className="table">
                             {/* head */}
                             <thead>
-                                <tr className=" bg-gray-200 text-xl font-bold">
+                                <tr className=" light:bg-gray-200 text-xl font-bold">
                                     <th>No</th>
                                     <th>Image</th>
                                     <th>Food Name</th>
@@ -80,9 +82,9 @@ const ManageMyFoods = () => {
                                         <td>{food.foodQuantity}</td>
                                         <td > <button className={" btn text-white " + (food.foodStatus === 'available' ? 'bg-green-500' : 'bg-red-500')}>{food.foodStatus}</button></td>
                                         <td> <Link to={`/updatedPages/${food._id}`}>
-                                            <button className="btn btn-info hover:btn-ghost">Update</button>
+                                            <button className="btn  hover:btn-info"><FaRegEdit className=" text-2xl" /></button>
                                         </Link></td>
-                                        <td><button onClick={() => handleDeleteFood(food._id)} className="btn btn-error hover:btn-ghost">X</button></td>
+                                        <td><button onClick={() => handleDeleteFood(food._id)} className="btn  hover:btn-ghost"><MdDelete className=" text-red-600 text-3xl" /></button></td>
                                     </tr>)
                                 }
                             </tbody>

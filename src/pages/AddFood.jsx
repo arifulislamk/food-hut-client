@@ -102,7 +102,7 @@ const AddFood = () => {
                             <label className="label">
                                 <span className="label-text text-xl font-medium">Expired Date/Time :</span>
                             </label>
-                            <DatePicker dateFormat="dd/MM/YYYY" className=" border w-[90%] border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
+                            <DatePicker dateFormat="dd/MM/YYYY" className=" border w-[90%] light:border-gray-500 p-3 text-xl rounded-lg" name="expiredDate" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                     </div>
 
@@ -111,7 +111,7 @@ const AddFood = () => {
                             <span className="label-text text-xl font-medium">Additional Notes :</span>
                         </label>
 
-                        <textarea cols={10} rows={5} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border border-gray-500 rounded-lg"></textarea>
+                        <textarea cols={10} rows={5} name="additionalnotes" placeholder="Additional Notes" type="text" className=" outline-none border light:border-gray-500 rounded-lg"></textarea>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between">
