@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
+import { motion } from "framer-motion";
+
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext) ;
     const [showdropdown, setShowdropdown] = useState(false)
@@ -25,7 +27,11 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar font-open-sans font-medium fixed top-0  z-50 shadow-lg bg-base-100">
+        <motion.div
+        initial = {{y: -250}}
+        animate = {{ y: 0}}
+        transition={{delay: .2, type: 'spring', stiffness: 20}}
+        className="navbar font-open-sans font-medium fixed top-0  z-50 shadow-lg bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,7 +87,7 @@ const Navbar = () => {
                         </>
                 }
             </div>
-        </div>
+        </motion.div>
     );
 };
 

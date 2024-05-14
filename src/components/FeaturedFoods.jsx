@@ -1,21 +1,9 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
-    // const [loading, setLoading] = useState(true);
-    // const [foods, setFoods] = useState([])
-    // useEffect(() => {
-    //     axios(`${import.meta.env.VITE_URL}/allFoods`)
-    //         .then(res => {
-    //             console.log(res.data, 'from featured food')
-    //             setFoods(res.data)
-    //             setLoading(false)
-    //         })
-    // }, [])
-
     const { isLoading, data: foods } = useQuery({
         queryKey: ['foods'],
         queryFn: async () => {
@@ -34,7 +22,11 @@ const FeaturedFoods = () => {
             <h2 className="font-poppins font-medium  text-center text-2xl md:text-3xl  lg:text-5xl mb-10">Featured Foods </h2>
 
             <Fade cascade duration={3000}>
-                <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+                <motion.div
+                    initial={{ y: -500 }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 4, type: 'spring', stiffness: 120 }}
+                    className=" grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
                     {
                         foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
                             <figure><img src={food.foodImage} alt="Shoes" /></figure>
@@ -61,7 +53,7 @@ const FeaturedFoods = () => {
                             </div>
                         </div>)
                     }
-                </div>
+                </motion.div>
                 <div className=" text-center mt-10">
                     <Link to='/availableFoods'><button className="btn btn-warning text-white ">Show All</button></Link>
                 </div>
