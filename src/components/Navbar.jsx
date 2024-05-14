@@ -1,11 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-
 import { motion } from "framer-motion";
 
+import animation1 from "../assets/Animation - 1715711276957.json";
+import Lottie from "lottie-react";
+
+
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext) ;
+    const { user, logOut } = useContext(AuthContext);
     const [showdropdown, setShowdropdown] = useState(false)
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -28,10 +31,10 @@ const Navbar = () => {
     }
     return (
         <motion.div
-        initial = {{y: -250}}
-        animate = {{ y: 0}}
-        transition={{delay: .2, type: 'spring', stiffness: 20}}
-        className="navbar font-open-sans font-medium fixed top-0  z-50 shadow-lg bg-base-100">
+            initial={{ y: -250 }}
+            animate={{ y: 0 }}
+            transition={{ delay: .2, type: 'spring', stiffness: 20 }}
+            className="navbar font-open-sans font-medium fixed top-0  z-50 shadow-lg bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,7 +44,13 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to="/"><img className=" md:w-48 rounded-lg md:hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" /></Link>
+
+
+                <Link to="/"><img className="  md:w-48 rounded-lg md:hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" /></Link>
+
+                <div>
+                    <Lottie className="w-10" loop={true} animationData={animation1}></Lottie>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu text-[16px] menu-horizontal px-1 gap-2">
@@ -65,7 +74,7 @@ const Navbar = () => {
                                 className="mr-2  z-10">
                                 <div>
                                     {
-                                        user?.photoURL ? <img className=" w-10 md:w-[50px] rounded-3xl " src={user.photoURL} alt="" /> : "PhotoNot Availavail this User"
+                                        user?.photoURL ? <img className="lg:h-12 w-10 md:w-[50px] rounded-3xl " src={user.photoURL} alt="" /> : "PhotoNot Availavail this User"
                                     }
                                 </div>
 

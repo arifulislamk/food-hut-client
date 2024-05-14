@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import animation1 from "../assets/Animation - 1715711276957.json";
+import Lottie from "lottie-react";
 
 const Footer = () => {
     return (
@@ -6,7 +8,12 @@ const Footer = () => {
             <div className="w-4/5 p-5 md:p-8 lg:p-14">
                 <div className="footer  ">
                     <div className=" space-y-6 md:space-y-10 ">
-                        <Link to="/"><img className=" md:w-48 rounded-lg hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" /></Link>
+                        <div className=" flex items-center  gap-2">
+                            <Link to="/"><img className=" md:w-48 rounded-lg hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" />
+                            </Link>
+
+                            <Lottie className=" rounded-lg md:w-12 lg:w-20" loop={true} animationData={animation1} />
+                        </div>
                         <p className=" md:text-2xl">Food Hut Company And Varaitis.<br />Providing reliable Foods since 1992</p>
 
                         <div>

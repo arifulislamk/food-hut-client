@@ -80,7 +80,7 @@ const FoodDetails = () => {
                         <div className=" flex flex-col md:flex-row items-center lg:gap-10">
 
                             <div className=" space-y-3 lg:space-y-5">
-                                <h1 className=" font-bold text-xl text-center text-red-500">Donar Information</h1>
+                                <h1 className=" font-bold text-xl text-center text-red-500">Donar Information / Who add this food?</h1>
                                 <p><span className=" lg:mr-6"> Name :</span> {donatorName ? donatorName : "Name Not Found"}</p>
                                 <p> <span className=" lg:mr-6">Email : </span> {donatorEmail ? donatorEmail : "email not found"}</p>
                                 <p> <span className=" lg:mr-6">Pickup Location : </span> {pickupLocation ? pickupLocation : "location not found"}</p>
@@ -102,7 +102,7 @@ const FoodDetails = () => {
                             </div>
                             {/* <button className="btn w-full bg-secondary ">Request</button> */}
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn  bg-secondary" onClick={() => document.getElementById('my_modal_2').showModal()}>Request</button>
+                            <button className="btn  bg-green-500 text-3xl text-red-500" onClick={() => document.getElementById('my_modal_2').showModal()}>Request</button>
                             <dialog id="my_modal_2" className="modal">
                                 <div className="modal-box md:max-w-[800px]">
                                     <form onSubmit={handleRequest} className="   font-open-sans card-body mb-6 border rounded-lg border-gray-400 lg:w-5/6 mx-auto">

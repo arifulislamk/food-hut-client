@@ -7,19 +7,22 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const { register, handleSubmit } = useForm()
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation()
     const [showpassword, setshowpassword] = useState(false);
 
-    const handleLoginbtn = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+    const handleLoginbtn = data => {
+        const { email, password } = data;
+        // event.preventDefault();
+        // const form = event.target;
+        // const email = form.email.value;
+        // const password = form.password.value;
+        console.log( email, password, data);
 
         loginUser(email, password)
             .then(res => {
@@ -94,20 +97,20 @@ const Login = () => {
                 <title>FOOD HUT | Login</title>
             </Helmet>
             <h2 className="font-poppins font-medium mb-4 text-center text-5xl">Please Login</h2>
-            <form onSubmit={handleLoginbtn} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
+            <form onSubmit={handleSubmit(handleLoginbtn)} className="card-body mb-6 border rounded-lg border-gray-400 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Email</span>
                     </label>
-                    <input type="email" name="email" placeholder="Your Email" className="input input-bordered" required />
+                    <input {...register('email')} type="email" placeholder="Your Email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-2xl font-medium">Password</span>
                     </label>
                     <div className="mb-4 relative" >
-                        <input placeholder="Your Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
-                            type={showpassword ? 'text' : 'password'} name="password" id="" required />
+                        <input {...register('password')} placeholder="Your Password" className=" w-full py-2 px-4  input input-bordered rounded-lg"
+                            type={showpassword ? 'text' : 'password'} id="" required />
                         <span className="absolute top-3 right-4 " onClick={() => { setshowpassword(!showpassword) }}>
                             {showpassword ? <LuEyeOff /> : <LuEye />}
                         </span>

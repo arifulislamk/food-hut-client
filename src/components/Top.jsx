@@ -22,8 +22,8 @@ const Top = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className=" lg:w-1/2 rounded-lg">
-                            <img src="https://i.ibb.co/H4hgN7b/THAILAND-24.png" alt="" className="" />
+                        <div className=" lg:w-1/2  rounded-lg">
+                            <img src="https://i.ibb.co/H4hgN7b/THAILAND-24.png" alt="" className=" rounded-lg" />
                         </div>
                     </div>
                 </section>

@@ -5,7 +5,7 @@ const Accorodian = () => {
         <div className="mt-10">
             <Fade cascade duration={2000}>
                 <section className="">
-                    <div className="container bg-gray-100 flex flex-col justify-center p-4 mx-auto md:p-8 md:py-28 rounded-lg">
+                    <div className="container light:bg-gray-100 flex flex-col justify-center p-4 mx-auto md:p-8 md:py-28 rounded-lg">
 
                         <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
                         <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">How it works</p>

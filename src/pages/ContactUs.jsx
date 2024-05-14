@@ -1,4 +1,5 @@
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
     const handlecontact = e => {
@@ -7,6 +8,9 @@ const ContactUs = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>FOOD HUT | Contact Us</title>
+            </Helmet>
             <Fade cascade duration={3000}>
                 <div className=" text-center">
                     <h2 className="font-poppins mb-5 mt-20 text-4xl font-bold  lg:text-5xl">Let`s talk!</h2>
