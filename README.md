@@ -24,11 +24,14 @@
 
 
 #  All npm package name
+
+- frame-motion (challange) : use simple frame -motion animation in the slider section. 
+
 - react-hook-from(useForm) : i used One of the key concepts in React Hook Form is to register your component into the SignUp section. 
 
 - Tanstack Queary(useQuery, useMutation) : TanStack Query is an open-source JavaScript library created by TanStack that simplifies data fetching and state management in React applications.
 
-- Axiis : Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
+- Axios : Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
 
 - react-awesome-reveal :React Awesome Reveal is a library for React apps written in TypeScript that adds reveal animations using the Intersection Observer API to detect when the elements appear in the viewport.
 
