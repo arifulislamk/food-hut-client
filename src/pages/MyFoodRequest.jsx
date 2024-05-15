@@ -28,6 +28,7 @@ const MyFoodRequest = () => {
             </Helmet>
 
             <Fade cascade duration={2000}>
+            <h2 className="font-poppins font-medium  text-3xl lg:hidden  text-center mb-10  mt-5">My Foods Request</h2>
                 <div>
                     <div className="overflow-x-auto lg:px-14">
                         <table className="table">
