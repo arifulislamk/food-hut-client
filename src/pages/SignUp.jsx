@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
@@ -10,6 +10,11 @@ import { useForm } from "react-hook-form";
 
 
 const SignUp = () => {
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
     const navigate = useNavigate()
     const { createUser, updateUser } = useContext(AuthContext);

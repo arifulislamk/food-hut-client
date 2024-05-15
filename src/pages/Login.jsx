@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
+    
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     const { register, handleSubmit } = useForm()
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();

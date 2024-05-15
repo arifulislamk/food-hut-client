@@ -57,7 +57,7 @@ const AvailableFoods = () => {
             <h2 className="font-poppins font-medium text-center lg:hidden text-2xl mb-5  mt-5">Available Foods section </h2>
 
             <Fade cascade duration={2000}>
-                <div className=" flex flex-col md:flex-row md:justify-center items-center md:mb-10 md:mt-10 gap-5 lg:gap-20">
+                <div className=" flex flex-col md:flex-row md:justify-center items-center md:mb-10 lg:mt-24 gap-5 lg:gap-20">
                     <div>
                         <form onSubmit={handleSearchbtn}>
                             <div className='flex p-1 overflow-hidden border border-gray-500 rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300'>

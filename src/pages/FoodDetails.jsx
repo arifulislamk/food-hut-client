@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -8,7 +8,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 const FoodDetails = () => {
-
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
     const foods = useLoaderData();
@@ -41,7 +43,7 @@ const FoodDetails = () => {
             requestDate: startDate,
             requestEmail: user.email,
         }
-        console.log('delete okkk', _id, foodStatus, food ,additionalNotes);
+        console.log('delete okkk', _id, foodStatus, food, additionalNotes);
 
         axios.put(`${import.meta.env.VITE_URL}/allFoodsupdate/${_id}`, food)
             .then(res => {
