@@ -6,6 +6,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
 
 const MyFoodRequest = () => {
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     // const foods = useLoaderData();
     const { user } = useContext(AuthContext)
     const [foods, setFoods] = useState([]);

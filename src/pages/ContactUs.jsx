@@ -1,10 +1,18 @@
+import { useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactUs = () => {
+    
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const handlecontact = e => {
         e.preventDefault()
         console.log(e.target.name.value)
+        toast.success('Thanks you. We will contact you very soon')
     }
     return (
         <div>
@@ -37,11 +45,12 @@ const ContactUs = () => {
                                 <label htmlFor="message" className="text-xl">Message</label>
                                 <textarea id="message" rows="3" placeholder="write here" className=" border border-gray-500 w-full p-3 rounded"></textarea>
                             </div>
-                            <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">Send Message</button>
+                            <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded bg-orange-300 text-gray-900 dark:text-gray-50">Send Message</button>
                         </form>
                     </div>
                 </div>
             </Fade>
+            <ToastContainer />
         </div>
     );
 };

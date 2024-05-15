@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet";
 import { BsLayoutThreeColumns } from "react-icons/bs";
@@ -7,6 +7,10 @@ import { LuColumns } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const AvailableFoods = () => {
+    
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
     // const [foods, setFoods] = useState([]);

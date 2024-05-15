@@ -12,6 +12,7 @@ import FoodDetails from "../pages/FoodDetails";
 import ErrorPage from "../pages/ErrorPage";
 import UpdatePages from "../pages/UpdatePages";
 import ContactUs from "../pages/ContactUs";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: "/contactUs",
                 element: <ContactUs />
+            },
+            {
+                path: "/profile",
+                element: <Profile />
             },
             {
                 path: "/login",

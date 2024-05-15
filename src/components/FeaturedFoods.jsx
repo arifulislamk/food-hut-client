@@ -28,10 +28,10 @@ const FeaturedFoods = () => {
                     transition={{ delay: 4, type: 'spring', stiffness: 120 }}
                     className=" grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
                     {
-                        foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
+                        foods?.map(food => <div key={food._id} className="card font-open-sans card-compact bg-base-100 shadow-xl">
                             <figure><img src={food.foodImage} alt="Shoes" /></figure>
                             <div className="card-body space-y-3">
-                                <h2 className="font-poppins font-medium card-title">{food.foodName}</h2>
+                                <h2 className="font-poppins font-bold card-title">{food.foodName}</h2>
                                 <p> Quantity : {food.foodQuantity}</p>
                                 <p> Pickup : {food.pickupLocation}</p>
                                 <p> Expired Date/Time :  {new Date(food.expiredDate).toLocaleDateString('en-GB', {

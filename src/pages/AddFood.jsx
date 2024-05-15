@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
@@ -12,6 +12,10 @@ import { Fade } from "react-awesome-reveal";
 
 
 const AddFood = () => {
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();

@@ -18,7 +18,7 @@ const Slider = () => {
                                 animate={{ y: 0 }}
                                 transition={{ delay: 1, type: 'spring', stiffness: 10 }}
                                 className="space-y-3 flex-1">
-                                <h2 className="font-poppins  text-xl text-secondary md:text-4xl font-bold">Kacchi is Layers of partially boiled basmati rice and raw meat</h2>
+                                <h2 className="font-poppins  text-xl  md:text-4xl font-bold">Kacchi is Layers of partially boiled basmati rice and raw meat</h2>
                                 <p className=" text-2xl , md:text-4xl font-medium text-error "> Sultan Dain, Dhaka</p>
                                 <div className=" flex gap-10 items-center">
                                     <div>
@@ -53,7 +53,7 @@ const Slider = () => {
                             transition={{ delay: 1, type: 'spring', stiffness: 10 }}
                             className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                             <div className="space-y-7 flex-1">
-                                <h2 className="font-poppins   text-xl text-secondary lg:text-4xl font-bold">Check the juices run clear by pulling the leg away from the body</h2>
+                                <h2 className="font-poppins   text-xl  lg:text-4xl font-bold">Check the juices run clear by pulling the leg away from the body</h2>
                                 <p className=" text-2xl lg:text-4xl font-medium text-error "> Red Chicken,
                                     Dhaka-1230</p>
                                 <Link to="/foodDetails/663f49b1442329bb0c45555b">
@@ -80,7 +80,7 @@ const Slider = () => {
                             transition={{ delay: 1, type: 'spring', stiffness: 10 }}
                             className="flex flex-col lg:flex-row-reverse p-4 lg:p-24 gap-20">
                             <div className="space-y-7 flex-1">
-                                <h2 className="font-poppins text-xl text-secondary lg:text-4xl font-bold">Hilsa deep-fried in mustard oil until crunchy and sizzling</h2>
+                                <h2 className="font-poppins text-xl  lg:text-4xl font-bold">Hilsa deep-fried in mustard oil until crunchy and sizzling</h2>
                                 <p className=" text-2xl lg:text-4xl font-medium text-error "> Uttara
                                     ,
                                     Dhaka-1230</p>

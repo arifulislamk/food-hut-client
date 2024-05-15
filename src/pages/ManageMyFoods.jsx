@@ -9,6 +9,10 @@ import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
 const ManageMyFoods = () => {
+    
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useContext(AuthContext)
     const [foods, setMyFoods] = useState([])
     useEffect(() => {
