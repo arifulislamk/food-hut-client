@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className="footer  ">
                     <div className=" space-y-6 md:space-y-10 ">
                         <div className=" flex items-center  gap-2">
-                            <Link to="/"><img className=" md:w-48 rounded-lg hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" />
+                            <Link to="/"><img className=" md:w-48 md:h-14 rounded-lg hover:btn" src='https://i.ibb.co/m6cF5xZ/Screenshot-2024-05-13-005057.png' alt="" />
                             </Link>
 
                             <Lottie className=" rounded-lg md:w-12 lg:w-20" loop={true} animationData={animation1} />

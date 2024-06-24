@@ -47,7 +47,9 @@ const Navbar = () => {
                     </div>
 
 
-                    <Link to="/"><img className="  md:w-48 rounded-lg md:hover:btn" src='https://i.ibb.co/5knk6Gb/Screenshot-2024-05-13-005057.png' alt="" /></Link>
+                    <Link to="/">
+                        <img className="  md:w-48 md:h-10 rounded-lg md:hover:btn" src='https://i.ibb.co/m6cF5xZ/Screenshot-2024-05-13-005057.png' alt="" />
+                    </Link>
 
                     <div>
                         <Lottie className="w-10 hidden md:inline-block" loop={true} animationData={animation1}></Lottie>
@@ -98,8 +100,8 @@ const Navbar = () => {
                     }
                 </div>
             </motion.div>
-            </div>
-            );
+        </div>
+    );
 };
 
-            export default Navbar;
+export default Navbar;
