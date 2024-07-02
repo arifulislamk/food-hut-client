@@ -11,7 +11,11 @@
 - Add Food : Any User can addd food  .
 - Manage My Foods: When an user added a food then he can always manege his foods  .
 - My Food Request : User cliked foods from requested button in viewDetails page.
-
+# How setup this repo
+- install npm i
+- change mongodb link
+- firebase env add , localurl add in env file in the client env
+- env file for server site
 #  npm package
 - frame-motion 
 - react-hook-from
