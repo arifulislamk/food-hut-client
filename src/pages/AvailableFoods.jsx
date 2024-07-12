@@ -112,7 +112,7 @@ const AvailableFoods = () => {
                 <div className={"grid mt-6 " + (toggle ? 'md:gap-5  md:grid-cols-3' : 'md:grid-cols-2 md:gap-10')}>
                     {
                         foods?.map(food => <div key={food._id} className="card card-compact bg-base-100 shadow-xl">
-                            <figure><img src={food.foodImage} alt="Shoes" /></figure>
+                            <figure><img className="w-full" src={food.foodImage} alt={food.foodName} /></figure>
                             <div className="card-body space-y-3">
                                 <h2 className="font-poppins font-medium card-title">{food.foodName}</h2>
                                 <p> Quantity : {food.foodQuantity}</p>
@@ -126,7 +126,7 @@ const AvailableFoods = () => {
 
                                 <div className="card-actions mt-14 justify-between">
                                     <div className=" flex items-center gap-5" >
-                                        <img className="w-1/6 rounded-full" src={food.donatorImage} alt="" />
+                                        <img className="w-1/6 rounded-full" src={food.donatorImage} alt="Donator Image" />
                                         <p className=" text-xl">{food.donatorName}</p>
                                     </div>
                                     <Link to={`/foodDetails/${food._id}`}>

@@ -29,7 +29,7 @@ const FeaturedFoods = () => {
                     className=" grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
                     {
                         foods?.map(food => <div key={food._id} className="card font-open-sans card-compact bg-base-100 shadow-xl">
-                            <figure><img src={food.foodImage} alt="Shoes" /></figure>
+                            <figure><img className="w-full" src={food.foodImage} alt={food.foodName} /></figure>
                             <div className="card-body space-y-3">
                                 <h2 className="font-poppins font-bold card-title">{food.foodName}</h2>
                                 <p> Quantity : {food.foodQuantity}</p>
@@ -43,7 +43,7 @@ const FeaturedFoods = () => {
 
                                 <div className="card-actions mt-14 justify-between">
                                     <div className=" flex items-center gap-5" >
-                                        <img className="w-1/6 rounded-full" src={food.donatorImage} alt="" />
+                                        <img className="w-1/6 rounded-full" src={food.donatorImage} alt="Donator Image" />
                                         <p className=" text-xl">{food.donatorName}</p>
                                     </div>
                                     <Link to={`/foodDetails/${food._id}`}>
