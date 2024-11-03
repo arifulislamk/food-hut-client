@@ -1,7 +1,7 @@
 
 # WebSite Info(Food Sharing)
 * FOOD HUT
-* Link : https://food-hut-28b3b.web.app/
+* Link : https://food-hut-service.netlify.app/
 *  ServerSite : https://github.com/arifulislamk/food-hut-server
 * ClientSite: https://github.com/arifulislamk/food-hut-client
   
